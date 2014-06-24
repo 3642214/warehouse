@@ -7,8 +7,16 @@ db::db()
     if(!ddb.open())
     {
         qDebug()<<"error:can not open db file";
+
     }
 
+}
+
+void db::initDB()
+{
+    QSqlQuery sql_q;
+    sql_q.exec("CREATE TABLE class (name TEXT,etalon TEXT)");
+    sql_q.exec("CREATE TABLE detail (id INTEGER  PRIMARY KEY AUTOINCREMENT DEFAULT NULL,classID INTEGER DEFAULT NULL,date Date DEFAULT NULL,number INTEGER DEFAULT NULL,summary INTEGER DEFAULT NULL,income INTEGER DEFAULT NULL,lend_long INTEGER DEFAULT NULL,lend_sort INTEGER DEFAULT NULL,loss INTEGER DEFAULT NULL,lost INTEGER DEFAULT NULL,t_lend_long INTEGER DEFAULT NULL,t_lend_sort INTEGER  DEFAULT NULL,t_new INTEGER  DEFAULT NULL,t_old INTEGER DEFAULT NULL,t_total INTEGER  DEFAULT NULL,total INTEGER DEFAULT NULL)");
 }
 
 int db::setClass(QString name, QString etalon)
@@ -33,6 +41,26 @@ int db::setClass(QString name, QString etalon)
     }
     else {
         return id;
+    }
+
+}
+
+bool db::delClass(QString name, QString etalon)
+{
+    QSqlQuery sql_q;
+    QString delClass_sql = "delete from class where name = :name and etalon = :etalon";
+    sql_q.prepare(delClass_sql);
+    sql_q.bindValue(":name",name);
+    sql_q.bindValue(":etalon",etalon);
+    if(!sql_q.exec())
+    {
+        qDebug()<<"del class error : "<<sql_q.lastError();
+        return false;
+    }
+    else
+    {
+        qDebug()<<"del class ok";
+        return true;
     }
 
 }

@@ -4,6 +4,7 @@
 #include <QComboBox>
 #include <QTableWidgetItem>
 #include <QMessageBox>
+#include <addclass.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -19,9 +20,10 @@ MainWindow::MainWindow(QWidget *parent) :
     //    qDebug()<< myDB->setDetail(myDetail);
     //    qDebug()<< myDB->updateDetail((detail){0,3,"2014.06.18",44,4,5,6,7,8,9,10});
     //    qDebug()<< myDB->getDetail(1).at(0).date;
-    ui->namesComboBox->addItems(myDB->getAllName());
-    changeEtalon(ui->namesComboBox->currentText());
+//    ui->namesComboBox->addItems(myDB->getAllName());
+//    changeEtalon(ui->namesComboBox->currentText());
     QObject::connect(ui->namesComboBox,SIGNAL(currentTextChanged(QString)),this,SLOT(changeEtalon(QString)));
+    ui->namesComboBox->addItems(myDB->getAllName());
     //        ui->tableWidget->setRowCount(1);
     //        ui->tableWidget->setItem(0,0,new QTableWidgetItem(QString("2221")));
 }
@@ -156,4 +158,20 @@ void MainWindow::on_commitButton_clicked()
     else {
         myDB->updateDetail(m_detal);
     }
+}
+
+void MainWindow::on_commitButton_2_clicked()
+{
+//    addClass* ac = new addClass(myDB);
+//    QObject::connect(ac,SIGNAL(changeNames()),this,SLOT(flushNames()));
+//    ac->show();
+    addClass ac(myDB,this);
+    ac.exec();
+    flushNames();
+}
+
+void MainWindow::flushNames()
+{
+    ui->namesComboBox->clear();
+    ui->namesComboBox->addItems(myDB->getAllName());
 }

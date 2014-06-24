@@ -38,6 +38,7 @@ private:
     QSqlDatabase ddb;
 public:
     db();
+    void initDB();
     int setClass(QString name,QString etalon);
     bool delClass(QString name,QString etalon);
     int getClassID(QString name,QString etalon);
