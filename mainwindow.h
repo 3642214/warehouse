@@ -32,8 +32,9 @@ private slots:
     void on_addButton_clicked();
     void on_delButton_clicked();
     void on_commitButton_clicked();
-    void on_commitButton_2_clicked();
+    void on_addClassButton_clicked();
     void flushNames();
+    void on_exportButton_clicked();
 };
 
 #endif // MAINWINDOW_H

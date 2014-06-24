@@ -151,6 +151,7 @@ DIST          = /Applications/QT/5.3/clang_64/mkspecs/features/spec_pre.prf \
 		/Applications/QT/5.3/clang_64/mkspecs/features/qt_config.prf \
 		/Applications/QT/5.3/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Applications/QT/5.3/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/Applications/QT/5.3/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Applications/QT/5.3/clang_64/mkspecs/features/default_pre.prf \
 		/Applications/QT/5.3/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -313,6 +314,7 @@ Makefile: warehouse.pro /Applications/QT/5.3/clang_64/mkspecs/macx-clang/qmake.c
 		/Applications/QT/5.3/clang_64/mkspecs/features/qt_config.prf \
 		/Applications/QT/5.3/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Applications/QT/5.3/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/Applications/QT/5.3/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Applications/QT/5.3/clang_64/mkspecs/features/default_pre.prf \
 		/Applications/QT/5.3/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -434,6 +436,7 @@ Makefile: warehouse.pro /Applications/QT/5.3/clang_64/mkspecs/macx-clang/qmake.c
 /Applications/QT/5.3/clang_64/mkspecs/features/qt_config.prf:
 /Applications/QT/5.3/clang_64/mkspecs/macx-clang/qmake.conf:
 /Applications/QT/5.3/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /Applications/QT/5.3/clang_64/mkspecs/features/exclusive_builds.prf:
 /Applications/QT/5.3/clang_64/mkspecs/features/default_pre.prf:
 /Applications/QT/5.3/clang_64/mkspecs/features/mac/default_pre.prf:
@@ -620,7 +623,9 @@ mainwindow.o: mainwindow.cpp mainwindow.h \
 		/Applications/QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qmessagebox.h \
 		addclass.h \
 		/Applications/QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QDialog \
-		/Applications/QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h
+		/Applications/QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qdialog.h \
+		/Applications/QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/QFileDialog \
+		/Applications/QT/5.3/clang_64/lib/QtWidgets.framework/Versions/5/Headers/qfiledialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
 db.o: db.cpp db.h \
