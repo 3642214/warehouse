@@ -24,6 +24,7 @@ public slots:
     void addRow(QList<detail> d);
     void clearRow();
     void setCulReadOnlay();
+    void initItem(int row);
 
 public:
     db* myDB;

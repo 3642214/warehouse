@@ -23,3 +23,8 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui \
     addclass.ui
+
+OTHER_FILES += \
+    ico.rc
+
+RC_FILE = ico.rc

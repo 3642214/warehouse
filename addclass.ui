@@ -23,7 +23,11 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>添加物品种类</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>ksig.ico</normaloff>ksig.ico</iconset>
   </property>
   <widget class="QPushButton" name="flushButton">
    <property name="geometry">

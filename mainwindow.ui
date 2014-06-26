@@ -19,6 +19,10 @@
   <property name="windowTitle">
    <string>库存管理软件v1.0</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>F:/ICONS/19apps/kate.ico</normaloff>F:/ICONS/19apps/kate.ico</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
@@ -63,8 +67,8 @@
         <rect>
          <x>190</x>
          <y>4</y>
-         <width>114</width>
-         <height>32</height>
+         <width>110</width>
+         <height>25</height>
         </rect>
        </property>
        <property name="text">
@@ -76,8 +80,8 @@
         <rect>
          <x>60</x>
          <y>5</y>
-         <width>111</width>
-         <height>26</height>
+         <width>110</width>
+         <height>25</height>
         </rect>
        </property>
       </widget>
@@ -86,8 +90,8 @@
         <rect>
          <x>60</x>
          <y>34</y>
-         <width>111</width>
-         <height>26</height>
+         <width>110</width>
+         <height>25</height>
         </rect>
        </property>
       </widget>
@@ -95,9 +99,9 @@
        <property name="geometry">
         <rect>
          <x>190</x>
-         <y>32</y>
-         <width>114</width>
-         <height>32</height>
+         <y>34</y>
+         <width>110</width>
+         <height>25</height>
         </rect>
        </property>
        <property name="text">
@@ -109,8 +113,8 @@
         <rect>
          <x>310</x>
          <y>4</y>
-         <width>114</width>
-         <height>32</height>
+         <width>110</width>
+         <height>25</height>
         </rect>
        </property>
        <property name="text">
@@ -121,9 +125,9 @@
        <property name="geometry">
         <rect>
          <x>310</x>
-         <y>32</y>
-         <width>114</width>
-         <height>32</height>
+         <y>34</y>
+         <width>110</width>
+         <height>25</height>
         </rect>
        </property>
        <property name="text">
@@ -146,9 +150,9 @@
       <widget class="QPushButton" name="exportButton">
        <property name="geometry">
         <rect>
-         <x>620</x>
+         <x>683</x>
          <y>20</y>
-         <width>114</width>
+         <width>51</width>
          <height>32</height>
         </rect>
        </property>

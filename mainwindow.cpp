@@ -86,10 +86,21 @@ void MainWindow::setCulReadOnlay()
     qDebug()<<"row size is "<<rowSize;
     for(int i=0;i<rowSize;i++)
     {
-        if(ui->tableWidget->item(i,0) == NULL){
-            ui->tableWidget->setItem(i,0,new QTableWidgetItem(QString("")));
-        }
+//                if(ui->tableWidget->item(i,0) == NULL){
+//                    ui->tableWidget->setItem(i,0,new QTableWidgetItem(QString("")));
+//                }
         ui->tableWidget->item(i, 0)->setFlags(Qt::NoItemFlags);
+    }
+}
+
+void MainWindow::initItem(int row)
+{
+    int colSize = ui->tableWidget->columnCount();
+    qDebug()<<"column size is "<<colSize;
+    for(int i = 0;i<colSize;i++)
+    {
+
+        ui->tableWidget->setItem(row,i,new QTableWidgetItem(QString("")));
     }
 }
 
@@ -109,7 +120,7 @@ void MainWindow::on_addButton_clicked()
 {
     int i = ui->tableWidget->rowCount() + 1;
     ui->tableWidget->setRowCount(i);
-    ui->tableWidget->setItem(i - 1,0,new QTableWidgetItem(QString("")));
+    initItem(i - 1);
     setCulReadOnlay();
 }
 
@@ -133,9 +144,10 @@ void MainWindow::on_commitButton_clicked()
 {
     int row = ui->tableWidget->currentRow();
     qDebug()<<"row is "<<row;
+    int classId = myDB->getClassID(ui->namesComboBox->currentText(),ui->etalonComboBox->currentText());
     detail m_detal ={
         ui->tableWidget->item(row,0)->text().toInt(),
-        myDB->getClassID(ui->namesComboBox->currentText(),ui->etalonComboBox->currentText()),
+        classId,
         ui->tableWidget->item(row,1)->text(),
         ui->tableWidget->item(row,2)->text().toInt(),
         ui->tableWidget->item(row,3)->text().toInt(),
@@ -151,7 +163,7 @@ void MainWindow::on_commitButton_clicked()
         ui->tableWidget->item(row,13)->text().toInt(),
         ui->tableWidget->item(row,14)->text().toInt()
     };
-    qDebug()<<"m_detal.id "<<m_detal.id;
+    qDebug()<<"m_detal.id "/*<<m_detal.id*/;
     if(m_detal.id == 0)
     {
         myDB->setDetail(m_detal);
