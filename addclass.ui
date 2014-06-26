@@ -34,8 +34,8 @@
     <rect>
      <x>350</x>
      <y>6</y>
-     <width>114</width>
-     <height>32</height>
+     <width>110</width>
+     <height>25</height>
     </rect>
    </property>
    <property name="text">
@@ -47,8 +47,8 @@
     <rect>
      <x>60</x>
      <y>6</y>
-     <width>111</width>
-     <height>26</height>
+     <width>110</width>
+     <height>25</height>
     </rect>
    </property>
   </widget>
@@ -57,8 +57,8 @@
     <rect>
      <x>350</x>
      <y>41</y>
-     <width>114</width>
-     <height>32</height>
+     <width>110</width>
+     <height>25</height>
     </rect>
    </property>
    <property name="text">
@@ -70,8 +70,8 @@
     <rect>
      <x>350</x>
      <y>68</y>
-     <width>114</width>
-     <height>32</height>
+     <width>110</width>
+     <height>25</height>
     </rect>
    </property>
    <property name="text">
@@ -109,8 +109,8 @@
     <rect>
      <x>230</x>
      <y>6</y>
-     <width>111</width>
-     <height>26</height>
+     <width>110</width>
+     <height>25</height>
     </rect>
    </property>
   </widget>

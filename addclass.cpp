@@ -43,11 +43,15 @@ void addClass::on_delButton_clicked()
 {
     QString delName = ui->lineEdit->text();
     QString delEtalon = ui->lineEdit_2->text();
-    if(myDB1->delClass(delName,delEtalon))
+    QMessageBox::StandardButton delWarn = QMessageBox::warning(NULL, "删除提示", "是否删除>>" + delName + "<<的>>" + delEtalon +"<<规格,删除无法恢复!!!", QMessageBox::Yes | QMessageBox::No, QMessageBox::No);
+    if(delWarn == QMessageBox::Yes)
     {
-        ui->namesComboBox->clear();
-        ui->namesComboBox->addItems(myDB1->getAllName());
-        emit changeNames();
+        if(myDB1->delClass(delName,delEtalon))
+        {
+            ui->namesComboBox->clear();
+            ui->namesComboBox->addItems(myDB1->getAllName());
+            emit changeNames();
+        }
     }
 }
 
