@@ -2,7 +2,6 @@
 #define ADDCLASS_H
 
 #include <QDialog>
-#include <QMessageBox>
 #include <db.h>
 
 namespace Ui {

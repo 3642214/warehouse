@@ -2,12 +2,13 @@
 
 db::db()
 {
+    //    ddb = QSqlDatabase::addDatabase(QSqlDatabase::driver())
     ddb = QSqlDatabase::addDatabase("QSQLITE");
     ddb.setDatabaseName("warehouse.db");
     if(!ddb.open())
     {
-        qDebug()<<"error:can not open db file";
-
+        QMessageBox::critical(0, QObject::tr("错误"),QObject::tr("无法打开数据库文件。。。！！！"));
+        exit(0);
     }
 
 }
@@ -31,11 +32,11 @@ int db::setClass(QString name, QString etalon)
         sql_q.addBindValue(etalon);
         if(!sql_q.exec())
         {
-            qDebug()<<"set class error : "<<sql_q.lastError();
+            logError;
         }
         else
         {
-            qDebug()<<"set class ok";
+            logOK;
         }
         return getClassID(name,etalon);
     }
@@ -54,12 +55,12 @@ bool db::delClass(QString name, QString etalon)
     sql_q.bindValue(":etalon",etalon);
     if(!sql_q.exec())
     {
-        qDebug()<<"del class error : "<<sql_q.lastError();
+        logError;
         return false;
     }
     else
     {
-        qDebug()<<"del class ok";
+        logOK;
         return true;
     }
 
@@ -74,11 +75,11 @@ int db::getClassID(QString name, QString etalon)
     sql_q.bindValue(":etalon",etalon);
     if(!sql_q.exec())
     {
-        qDebug()<<"get classID error : "<<sql_q.lastError();
+        logError;
     }
     else
     {
-        qDebug()<<"get classID ok";
+        logOK;
     }
     int i = 0;
     while (sql_q.next()) {
@@ -95,11 +96,11 @@ QList<QString> db::getAllName()
     sql_q.prepare(getEtalon_sql);
     if(!sql_q.exec())
     {
-        qDebug()<<"get all names error : "<<sql_q.lastError();
+        logError;
     }
     else
     {
-        qDebug()<<"get all names ok";
+        logOK;
     }
     while (sql_q.next()) {
         names<<sql_q.value(0).toString();
@@ -115,7 +116,7 @@ bool db::setDetail(detail myDetail)
     QSqlQuery sql_q;
     QString setDetail_sql = "insert into detail (id,classID,date,number,summary,income,lend_long,lend_sort,loss,lost,t_lend_long,t_lend_sort,t_new,t_old,t_total,total) VALUES (:id,:classID,:date,:number,:summary,:income,:lend_long,:lend_sort,:loss,:lost,:t_lend_long,:t_lend_sort,:t_new,:t_old,:t_total,:total)";
     sql_q.prepare(setDetail_sql);
-//    sql_q.bindValue(":id",myDetail.id);
+    //    sql_q.bindValue(":id",myDetail.id);
     sql_q.bindValue(":classID",myDetail.classID);
     sql_q.bindValue(":date",myDetail.date);
     sql_q.bindValue(":number",myDetail.number);
@@ -133,11 +134,11 @@ bool db::setDetail(detail myDetail)
     sql_q.bindValue(":total",myDetail.total);
     if(!sql_q.exec())
     {
-        qDebug()<<"set detail error : "<<sql_q.lastError();
+        logError;
     }
     else
     {
-        qDebug()<<"set detail ok";
+        logOK;
     }
     return true;
 }
@@ -167,11 +168,11 @@ bool db::updateDetail(detail myDetail)
     sql_q.bindValue(":total",myDetail.total);
     if(!sql_q.exec())
     {
-        qDebug()<<"update detail error : "<<sql_q.lastError();
+        logError;
     }
     else
     {
-        qDebug()<<"update detail ok";
+        logOK;
     }
     return true;
 }
@@ -184,11 +185,11 @@ bool db::delDetail(int ID)
     sql_q.bindValue(":id",ID);
     if(!sql_q.exec())
     {
-        qDebug()<<"delete detail error : "<<sql_q.lastError();
+        logError;
     }
     else
     {
-        qDebug()<<"delete detail ok";
+        logOK;
     }
     return true;
 }
@@ -202,11 +203,11 @@ QList<QString> db::getEtalon(QString name)
     sql_q.addBindValue(name);
     if(!sql_q.exec())
     {
-        qDebug()<<"get etalon error : "<<sql_q.lastError();
+        logError;
     }
     else
     {
-        qDebug()<<"get etalon ok";
+        logOK;
     }
     while (sql_q.next()) {
         etalons<<sql_q.value(0).toString();
@@ -224,11 +225,11 @@ QList<detail> db::getDetails(int classID)
     sql_q.addBindValue(classID);
     if(!sql_q.exec())
     {
-        qDebug()<<"get detail error : "<<sql_q.lastError();
+        logError;
     }
     else
     {
-        qDebug()<<"get detail ok";
+        logOK;
     }
     while (sql_q.next()) {
         detail myDetail ={

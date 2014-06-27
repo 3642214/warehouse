@@ -3,7 +3,6 @@
 #include <QHeaderView>
 #include <QComboBox>
 #include <QTableWidgetItem>
-#include <QMessageBox>
 #include <addclass.h>
 #include <QFileDialog>
 
@@ -143,7 +142,12 @@ void MainWindow::on_delButton_clicked()
 void MainWindow::on_commitButton_clicked()
 {
     int row = ui->tableWidget->currentRow();
-    qDebug()<<"row is "<<row;
+//    qDebug()<<"row is "<<row;
+    if(row < 0)
+    {
+        QMessageBox::critical(0, tr("警告"), tr("请选择需要提交的一行记录"));
+        return;
+    }
     int classId = myDB->getClassID(ui->namesComboBox->currentText(),ui->etalonComboBox->currentText());
     detail m_detal ={
         ui->tableWidget->item(row,0)->text().toInt(),

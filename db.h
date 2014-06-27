@@ -1,15 +1,22 @@
 #ifndef DB_H
 #define DB_H
 
-#include <QString>
 #include <QList>
 #include <QSql>
 #include <QSqlDatabase>
 #include <QDebug>
 #include <QSqlQuery>
 #include <QSqlError>
+#include <QMessageBox>
+#include <QString>
 
 #define qdebugDetail     qDebug()<<myDetail.id<<myDetail.date<<myDetail.number<<myDetail.summary<<myDetail.income<<myDetail.lend_long<<myDetail.lend_sort<<myDetail.loss<<myDetail.lost<<myDetail.t_lend_long<<myDetail.t_lend_sort<<myDetail.t_new<<myDetail.t_old<<myDetail.t_total<<myDetail.total
+
+#define logError QString errorCode =  sql_q.lastError().text();\
+    qDebug()<<__FUNCTION__<<" error :"<<errorCode;\
+    QMessageBox::critical(0, QObject::tr("错误"),"错误名>>" + errorCode + " << ,操作数据库失败!!!")
+
+#define logOK qDebug()<<__FUNCTION__<<" ok"
 
 typedef struct
 {
