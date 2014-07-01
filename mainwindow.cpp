@@ -85,9 +85,9 @@ void MainWindow::setCulReadOnlay()
     qDebug()<<"row size is "<<rowSize;
     for(int i=0;i<rowSize;i++)
     {
-//                if(ui->tableWidget->item(i,0) == NULL){
-//                    ui->tableWidget->setItem(i,0,new QTableWidgetItem(QString("")));
-//                }
+        //                if(ui->tableWidget->item(i,0) == NULL){
+        //                    ui->tableWidget->setItem(i,0,new QTableWidgetItem(QString("")));
+        //                }
         ui->tableWidget->item(i, 0)->setFlags(Qt::NoItemFlags);
     }
 }
@@ -117,9 +117,17 @@ void MainWindow::on_serachButton_clicked()
 
 void MainWindow::on_addButton_clicked()
 {
-    int i = ui->tableWidget->rowCount() + 1;
-    ui->tableWidget->setRowCount(i);
-    initItem(i - 1);
+    int row = ui->tableWidget->rowCount();
+    for(int i = 0 ; i < row ; i++)
+    {
+        if(ui->tableWidget->item(i,0)->text() == "")
+        {
+            QMessageBox::critical(0, tr("警告"), tr("上次新增的一行未提交,请先提交!!!"));
+            return;
+        }
+    }
+    ui->tableWidget->setRowCount(row + 1);
+    initItem(row);
     setCulReadOnlay();
 }
 
@@ -142,7 +150,7 @@ void MainWindow::on_delButton_clicked()
 void MainWindow::on_commitButton_clicked()
 {
     int row = ui->tableWidget->currentRow();
-//    qDebug()<<"row is "<<row;
+    //    qDebug()<<"row is "<<row;
     if(row < 0)
     {
         QMessageBox::critical(0, tr("警告"), tr("请选择需要提交的一行记录"));
@@ -175,6 +183,7 @@ void MainWindow::on_commitButton_clicked()
     else {
         myDB->updateDetail(m_detal);
     }
+    this->on_serachButton_clicked();
 }
 
 void MainWindow::on_addClassButton_clicked()
