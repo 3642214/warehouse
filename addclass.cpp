@@ -35,7 +35,8 @@ void addClass::on_addButton_clicked()
         ui->etalonComboBox->setCurrentText(newEtalon);
         emit changeNames();
     }
-
+    ui->lineEdit->setText("");
+    ui->lineEdit_2->setText("");
 
 }
 
@@ -53,6 +54,8 @@ void addClass::on_delButton_clicked()
             emit changeNames();
         }
     }
+    ui->lineEdit->setText("");
+    ui->lineEdit_2->setText("");
 }
 
 void addClass::on_flushButton_clicked()

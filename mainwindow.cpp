@@ -185,6 +185,7 @@ void MainWindow::on_addClassButton_clicked()
     addClass ac(myDB,this);
     ac.exec();
     flushNames();
+    this->on_serachButton_clicked();
 }
 
 void MainWindow::flushNames()

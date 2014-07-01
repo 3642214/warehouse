@@ -249,32 +249,32 @@
       </column>
       <column>
        <property name="text">
-        <string>长期借</string>
+        <string>发出(长期借)</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>流动借</string>
+        <string>发出(流动借)</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>损耗</string>
+        <string>减少(损耗)</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>遗失</string>
+        <string>减少(遗失)</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>库存(常借)</string>
+        <string>结存(常借)</string>
        </property>
       </column>
       <column>
        <property name="text">
-        <string>库存(流借)</string>
+        <string>结存(流借)</string>
        </property>
       </column>
       <column>
