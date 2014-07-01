@@ -47,12 +47,14 @@ public:
     db();
     void initDB();
     int setClass(QString name,QString etalon);
+    bool updateClass(int classID,QString name,QString etalon);
     bool delClass(QString name,QString etalon);
     int getClassID(QString name,QString etalon);
     QList<QString> getAllName();
     bool setDetail(detail myDetail);
     bool updateDetail(detail myDetail);
     bool delDetail(int ID);
+    bool delDetailByClassID(int classID);
     QList<QString> getEtalon(QString name);
     QList<detail> getDetails(int classID);
 };

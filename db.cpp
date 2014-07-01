@@ -46,6 +46,25 @@ int db::setClass(QString name, QString etalon)
 
 }
 
+bool db::updateClass(int classID, QString name, QString etalon)
+{
+    QSqlQuery sql_q;
+    QString updateClass_sql = "update class set name = :name,etalon = :etalon where rowid = :classID";
+    sql_q.prepare(updateClass_sql);
+    sql_q.bindValue(":name",name);
+    sql_q.bindValue(":etalon",etalon);
+    sql_q.bindValue(":classID",classID);
+    if(!sql_q.exec())
+    {
+        logError;
+    }
+    else
+    {
+        logOK;
+    }
+    return true;
+}
+
 bool db::delClass(QString name, QString etalon)
 {
     QSqlQuery sql_q;
@@ -183,6 +202,23 @@ bool db::delDetail(int ID)
     QString delDetail_sql = "delete from detail where id = :id";
     sql_q.prepare(delDetail_sql);
     sql_q.bindValue(":id",ID);
+    if(!sql_q.exec())
+    {
+        logError;
+    }
+    else
+    {
+        logOK;
+    }
+    return true;
+}
+
+bool db::delDetailByClassID(int classID)
+{
+    QSqlQuery sql_q;
+    QString delDetailByClassID_sql = "delete from detail where classID = :classID";
+    sql_q.prepare(delDetailByClassID_sql);
+    sql_q.bindValue(":classID",classID);
     if(!sql_q.exec())
     {
         logError;

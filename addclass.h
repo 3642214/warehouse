@@ -20,6 +20,8 @@ private slots:
     void on_flushButton_clicked();
     void on_delButton_clicked();
     void on_addButton_clicked();
+    void on_modifyButton_clicked();
+
 private:
     Ui::addClass *ui;
 
