@@ -25,6 +25,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->namesComboBox,SIGNAL(currentTextChanged(QString)),this,SLOT(changeEtalon(QString)));
     QObject::connect(ui->etalonComboBox,SIGNAL(currentTextChanged(QString)),this,SLOT(on_serachButton_clicked()));
     ui->namesComboBox->addItems(myDB->getAllName());
+
+//    qDebug()<<"get details by name:"<<myDB->getDetailsByName("呆扳手").length();
     //        ui->tableWidget->setRowCount(1);
     //        ui->tableWidget->setItem(0,0,new QTableWidgetItem(QString("2221")));
 }

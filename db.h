@@ -57,6 +57,9 @@ public:
     bool delDetailByClassID(int classID);
     QList<QString> getEtalon(QString name);
     QList<detail> getDetails(int classID);
+    QList<detail> getDetailsByName(QString name);
+    QList<detail> getDetailsByEtalon(QString etalon);
+    QList<detail> getAllDetails();
 };
 
 #endif // DB_H

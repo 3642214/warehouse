@@ -256,9 +256,131 @@ QList<detail> db::getDetails(int classID)
 {
     QList<detail> details;
     QSqlQuery sql_q;
-    QString setDetail_sql = "select * from detail where classID = ?";
-    sql_q.prepare(setDetail_sql);
+    QString getDetails_sql = "select * from detail where classID = ?";
+    sql_q.prepare(getDetails_sql);
     sql_q.addBindValue(classID);
+    if(!sql_q.exec())
+    {
+        logError;
+    }
+    else
+    {
+        logOK;
+    }
+    while (sql_q.next()) {
+        detail myDetail ={
+            sql_q.value(0).toInt(),
+            sql_q.value(1).toInt(),
+            sql_q.value(2).toString(),
+            sql_q.value(3).toInt(),
+            sql_q.value(4).toInt(),
+            sql_q.value(5).toInt(),
+            sql_q.value(6).toInt(),
+            sql_q.value(7).toInt(),
+            sql_q.value(8).toInt(),
+            sql_q.value(9).toInt(),
+            sql_q.value(10).toInt(),
+            sql_q.value(11).toInt(),
+            sql_q.value(12).toInt(),
+            sql_q.value(13).toInt(),
+            sql_q.value(14).toInt(),
+            sql_q.value(15).toInt()
+        };
+        qDebug()<<"get details :";
+        qdebugDetail;
+        details<<myDetail;
+    }
+    return details;
+}
+
+QList<detail> db::getDetailsByName(QString name)
+{
+    QList<detail> details;
+    QSqlQuery sql_q;
+    QString getDetailsByName_sql = "select * from detail where classID in (select rowid from class where name = :name )";
+    sql_q.prepare(getDetailsByName_sql);
+    sql_q.bindValue(":name",name);
+    if(!sql_q.exec())
+    {
+        logError;
+    }
+    else
+    {
+        logOK;
+    }
+    while (sql_q.next()) {
+        detail myDetail ={
+            sql_q.value(0).toInt(),
+            sql_q.value(1).toInt(),
+            sql_q.value(2).toString(),
+            sql_q.value(3).toInt(),
+            sql_q.value(4).toInt(),
+            sql_q.value(5).toInt(),
+            sql_q.value(6).toInt(),
+            sql_q.value(7).toInt(),
+            sql_q.value(8).toInt(),
+            sql_q.value(9).toInt(),
+            sql_q.value(10).toInt(),
+            sql_q.value(11).toInt(),
+            sql_q.value(12).toInt(),
+            sql_q.value(13).toInt(),
+            sql_q.value(14).toInt(),
+            sql_q.value(15).toInt()
+        };
+        qDebug()<<"get details :";
+        qdebugDetail;
+        details<<myDetail;
+    }
+    return details;
+}
+
+QList<detail> db::getDetailsByEtalon(QString etalon)
+{
+    QList<detail> details;
+    QSqlQuery sql_q;
+    QString getDetailsByEtalon_sql = "select * from detail where classID in (select rowid from class where etalon = :etalon )";
+    sql_q.prepare(getDetailsByEtalon_sql);
+    sql_q.bindValue(":etalon",etalon);
+    if(!sql_q.exec())
+    {
+        logError;
+    }
+    else
+    {
+        logOK;
+    }
+    while (sql_q.next()) {
+        detail myDetail ={
+            sql_q.value(0).toInt(),
+            sql_q.value(1).toInt(),
+            sql_q.value(2).toString(),
+            sql_q.value(3).toInt(),
+            sql_q.value(4).toInt(),
+            sql_q.value(5).toInt(),
+            sql_q.value(6).toInt(),
+            sql_q.value(7).toInt(),
+            sql_q.value(8).toInt(),
+            sql_q.value(9).toInt(),
+            sql_q.value(10).toInt(),
+            sql_q.value(11).toInt(),
+            sql_q.value(12).toInt(),
+            sql_q.value(13).toInt(),
+            sql_q.value(14).toInt(),
+            sql_q.value(15).toInt()
+        };
+        qDebug()<<"get details :";
+        qdebugDetail;
+        details<<myDetail;
+    }
+    return details;
+}
+
+QList<detail> db::getAllDetails()
+{
+    QList<detail> details;
+    QSqlQuery sql_q;
+    QString getAllDetails_sql = "select * from detail";
+    sql_q.prepare(getAllDetails_sql);
     if(!sql_q.exec())
     {
         logError;
