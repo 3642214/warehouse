@@ -36,6 +36,7 @@ private slots:
     void on_addClassButton_clicked();
     void flushNames();
     void on_exportButton_clicked();
+    void on_showLastRecordButton_clicked();
 };
 
 #endif // MAINWINDOW_H

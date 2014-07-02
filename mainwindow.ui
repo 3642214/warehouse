@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>938</width>
+    <height>603</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -171,6 +171,19 @@
        </property>
        <property name="text">
         <string>zj14</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="showLastRecordButton">
+       <property name="geometry">
+        <rect>
+         <x>560</x>
+         <y>20</y>
+         <width>114</width>
+         <height>32</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>查看库存</string>
        </property>
       </widget>
      </widget>

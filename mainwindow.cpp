@@ -5,6 +5,7 @@
 #include <QTableWidgetItem>
 #include <addclass.h>
 #include <QFileDialog>
+#include <showlastrecord.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -251,4 +252,11 @@ void MainWindow::on_exportButton_clicked()
 
 
     QMessageBox::information(this, tr("OK"), tr("保存成功！"));
+}
+
+
+void MainWindow::on_showLastRecordButton_clicked()
+{
+    showLastRecord slr(myDB,this);
+    slr.exec();
 }

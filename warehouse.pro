@@ -14,14 +14,17 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     db.cpp \
-    addclass.cpp
+    addclass.cpp \
+    showlastrecord.cpp
 
 HEADERS  += mainwindow.h \
     db.h \
-    addclass.h
+    addclass.h \
+    showlastrecord.h
 
 FORMS    += mainwindow.ui \
-    addclass.ui
+    addclass.ui \
+    showlastrecord.ui
 
 OTHER_FILES += \
     ico.rc
