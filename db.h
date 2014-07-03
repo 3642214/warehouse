@@ -23,7 +23,7 @@ typedef struct
     int id;
     int classID;
     QString date;
-    int number;
+    QString number;
     int summary;
     int income;
     int lend_long;

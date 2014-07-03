@@ -58,7 +58,7 @@ void MainWindow::addRow(QList<detail> d)
             //            ui->tableWidget->setItem(0,0,new QTableWidgetItem("2222"));
             ui->tableWidget->setItem(i,0,new QTableWidgetItem(QString::number(m_detail.id)));
             ui->tableWidget->setItem(i,1,new QTableWidgetItem(QString(m_detail.date)));
-            ui->tableWidget->setItem(i,2,new QTableWidgetItem(QString::number(m_detail.number,10)));
+            ui->tableWidget->setItem(i,2,new QTableWidgetItem(QString(m_detail.number)));
             ui->tableWidget->setItem(i,3,new QTableWidgetItem(QString::number(m_detail.summary,10)));
             ui->tableWidget->setItem(i,4,new QTableWidgetItem(QString::number(m_detail.income,10)));
             ui->tableWidget->setItem(i,5,new QTableWidgetItem(QString::number(m_detail.lend_long),10));
@@ -165,7 +165,7 @@ void MainWindow::on_commitButton_clicked()
         ui->tableWidget->item(row,0)->text().toInt(),
         classId,
         ui->tableWidget->item(row,1)->text(),
-        ui->tableWidget->item(row,2)->text().toInt(),
+        ui->tableWidget->item(row,2)->text(),
         ui->tableWidget->item(row,3)->text().toInt(),
         ui->tableWidget->item(row,4)->text().toInt(),
         ui->tableWidget->item(row,5)->text().toInt(),
