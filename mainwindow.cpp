@@ -6,6 +6,7 @@
 #include <addclass.h>
 #include <QFileDialog>
 #include <showlastrecord.h>
+#include <QKeyEvent>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -26,7 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->namesComboBox,SIGNAL(currentTextChanged(QString)),this,SLOT(changeEtalon(QString)));
     QObject::connect(ui->etalonComboBox,SIGNAL(currentTextChanged(QString)),this,SLOT(on_serachButton_clicked()));
     ui->namesComboBox->addItems(myDB->getAllName());
-
+    ui->tableWidget->installEventFilter(this);
 //    qDebug()<<"get details by name:"<<myDB->getDetailsByName("呆扳手").length();
     //        ui->tableWidget->setRowCount(1);
     //        ui->tableWidget->setItem(0,0,new QTableWidgetItem(QString("2221")));
@@ -133,6 +134,7 @@ void MainWindow::on_addButton_clicked()
     ui->tableWidget->setRowCount(row + 1);
     initItem(row);
     setCulReadOnlay();
+    inEditMode();
 }
 
 void MainWindow::on_delButton_clicked()
@@ -188,6 +190,7 @@ void MainWindow::on_commitButton_clicked()
         myDB->updateDetail(m_detal);
     }
     this->on_serachButton_clicked();
+    outEditMode();
 }
 
 void MainWindow::on_addClassButton_clicked()
@@ -259,4 +262,26 @@ void MainWindow::on_showLastRecordButton_clicked()
 {
     showLastRecord slr(myDB,this);
     slr.exec();
+}
+
+void MainWindow::inEditMode()
+{
+    ui->namesComboBox->setDisabled(true);
+    ui->etalonComboBox->setDisabled(true);
+    ui->serachButton->setDisabled(true);
+    ui->addButton->setDisabled(true);
+    ui->addClassButton->setDisabled(true);
+    ui->exportButton->setDisabled(true);
+    ui->showLastRecordButton->setDisabled(true);
+}
+
+void MainWindow::outEditMode()
+{
+    ui->namesComboBox->setDisabled(false);
+    ui->etalonComboBox->setDisabled(false);
+    ui->serachButton->setDisabled(false);
+    ui->addButton->setDisabled(false);
+    ui->addClassButton->setDisabled(false);
+    ui->exportButton->setDisabled(false);
+    ui->showLastRecordButton->setDisabled(false);
 }

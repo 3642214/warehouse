@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <db.h>
+#include <QKeyEvent>
 
 namespace Ui {
 class MainWindow;
@@ -26,6 +27,7 @@ public slots:
     void setCulReadOnlay();
     void initItem(int row);
 
+
 public:
     db* myDB;
 private slots:
@@ -37,6 +39,8 @@ private slots:
     void flushNames();
     void on_exportButton_clicked();
     void on_showLastRecordButton_clicked();
+    void inEditMode();
+    void outEditMode();
 };
 
 #endif // MAINWINDOW_H
