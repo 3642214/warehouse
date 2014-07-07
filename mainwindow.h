@@ -26,8 +26,6 @@ public slots:
     void clearRow();
     void setCulReadOnlay();
     void initItem(int row);
-
-
 public:
     db* myDB;
 private slots:

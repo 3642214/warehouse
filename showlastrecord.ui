@@ -18,7 +18,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,2,0,2,0,0">
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,2,0,2,0,0,0">
      <item>
       <widget class="QLabel" name="label">
        <property name="text">
@@ -56,6 +56,13 @@
       <widget class="QPushButton" name="pushButton">
        <property name="text">
         <string>查看</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="exportButton">
+       <property name="text">
+        <string>导出</string>
        </property>
       </widget>
      </item>

@@ -28,7 +28,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(ui->etalonComboBox,SIGNAL(currentTextChanged(QString)),this,SLOT(on_serachButton_clicked()));
     ui->namesComboBox->addItems(myDB->getAllName());
     ui->tableWidget->installEventFilter(this);
-//    qDebug()<<"get details by name:"<<myDB->getDetailsByName("呆扳手").length();
+
+    //    qDebug()<<"get details by name:"<<myDB->getDetailsByName("呆扳手").length();
     //        ui->tableWidget->setRowCount(1);
     //        ui->tableWidget->setItem(0,0,new QTableWidgetItem(QString("2221")));
 }
@@ -107,6 +108,7 @@ void MainWindow::initItem(int row)
         ui->tableWidget->setItem(row,i,new QTableWidgetItem(QString("")));
     }
 }
+
 
 void MainWindow::on_serachButton_clicked()
 {

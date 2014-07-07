@@ -29,6 +29,7 @@ private slots:
     void on_pushButton_clicked();
     void setTableItem(QString name, QString etalon, QList<detail> detailList);
     void on_pushButton_2_clicked();
+    void on_exportButton_clicked();
 };
 
 #endif // SHOWLASTRECORD_H
