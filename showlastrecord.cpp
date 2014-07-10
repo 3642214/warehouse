@@ -48,7 +48,7 @@ void showLastRecord::on_pushButton_clicked()
                 QString name1 = namesList.at(i);
                 QString etalon1 = etalonsList.at(j);
                 qDebug()<<"name etalon "<<name1<<etalon1;
-                setTableItem(name1,etalon1,myDB1->getDetails(myDB1->getClassID(name1,etalon1)));
+                setTableItem(name1,etalon1,myDB1->getLastDetail(myDB1->getClassID(name1,etalon1)));
             }
         }
     }
@@ -60,12 +60,12 @@ void showLastRecord::on_pushButton_clicked()
             for(int i = 0;i<etalonsList.size();i++)
             {
                 QString etalon2 = etalonsList.at(i);
-                setTableItem(name,etalon2,myDB1->getDetails(myDB1->getClassID(name,etalon2)));
+                setTableItem(name,etalon2,myDB1->getLastDetail(myDB1->getClassID(name,etalon2)));
             }
         }
         else
         {
-            setTableItem(name,etalon,myDB1->getDetails(myDB1->getClassID(name,etalon)));
+            setTableItem(name,etalon,myDB1->getLastDetail(myDB1->getClassID(name,etalon)));
         }
     }
     ui->tableWidget->resizeColumnsToContents();

@@ -414,3 +414,44 @@ QList<detail> db::getAllDetails()
     }
     return details;
 }
+
+QList<detail> db::getLastDetail(int classID)
+{
+    QSqlQuery sql_q;
+    QList<detail> details;
+    QString getDetails_sql = "select * from detail where rowid = (select max(rowid) from detail where classID = ?)";
+    sql_q.prepare(getDetails_sql);
+    sql_q.addBindValue(classID);
+    if(!sql_q.exec())
+    {
+        logError;
+    }
+    else
+    {
+        logOK;
+    }
+    while (sql_q.next()) {
+       detail myDetail = {
+            sql_q.value(0).toInt(),
+            sql_q.value(1).toInt(),
+            sql_q.value(2).toString(),
+            sql_q.value(3).toString(),
+            sql_q.value(4).toInt(),
+            sql_q.value(5).toInt(),
+            sql_q.value(6).toInt(),
+            sql_q.value(7).toInt(),
+            sql_q.value(8).toInt(),
+            sql_q.value(9).toInt(),
+            sql_q.value(10).toInt(),
+            sql_q.value(11).toInt(),
+            sql_q.value(12).toInt(),
+            sql_q.value(13).toInt(),
+            sql_q.value(14).toInt(),
+            sql_q.value(15).toInt()
+        };
+        qDebug()<<"get details :";
+        qdebugDetail;
+        details<<myDetail;
+    }
+    return details;
+}

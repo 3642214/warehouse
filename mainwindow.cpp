@@ -153,6 +153,7 @@ void MainWindow::on_delButton_clicked()
 
         }
     }
+    outEditMode();
 }
 
 void MainWindow::on_commitButton_clicked()
@@ -279,6 +280,13 @@ void MainWindow::inEditMode()
 
 void MainWindow::outEditMode()
 {
+    for(int i = 0;i < ui->tableWidget->rowCount(); i++)
+    {
+        if(ui->tableWidget->item(i,0)->text() == "")
+        {
+            return;
+        }
+    }
     ui->namesComboBox->setDisabled(false);
     ui->etalonComboBox->setDisabled(false);
     ui->serachButton->setDisabled(false);

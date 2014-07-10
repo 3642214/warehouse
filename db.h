@@ -60,6 +60,7 @@ public:
     QList<detail> getDetailsByName(QString name);
     QList<detail> getDetailsByEtalon(QString etalon);
     QList<detail> getAllDetails();
+    QList<detail> getLastDetail(int classID);
 };
 
 #endif // DB_H
