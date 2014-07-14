@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <db.h>
 #include <QKeyEvent>
+#include <QTableWidgetItem>
 
 namespace Ui {
 class MainWindow;
@@ -19,7 +20,6 @@ public:
 
 private:
     Ui::MainWindow *ui;
-
 public slots:
     void changeEtalon(QString name);
     void addRow(QList<detail> d);
@@ -39,6 +39,7 @@ private slots:
     void on_showLastRecordButton_clicked();
     void inEditMode();
     void outEditMode();
+    void addWare(QTableWidgetItem* item);
 };
 
 #endif // MAINWINDOW_H

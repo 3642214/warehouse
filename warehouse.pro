@@ -15,12 +15,14 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     db.cpp \
     addclass.cpp \
-    showlastrecord.cpp
+    showlastrecord.cpp \
+    zjtablewidget.cpp
 
 HEADERS  += mainwindow.h \
     db.h \
     addclass.h \
-    showlastrecord.h
+    showlastrecord.h \
+    zjtablewidget.h
 
 FORMS    += mainwindow.ui \
     addclass.ui \

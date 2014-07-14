@@ -159,7 +159,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QTableWidget" name="tableWidget">
+     <widget class="zjTableWidget" name="tableWidget">
       <property name="contextMenuPolicy">
        <enum>Qt::DefaultContextMenu</enum>
       </property>
@@ -286,6 +286,13 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>zjTableWidget</class>
+   <extends>QTableWidget</extends>
+   <header>zjtablewidget.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

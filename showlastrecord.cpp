@@ -107,11 +107,11 @@ void showLastRecord::on_exportButton_clicked()
     QFile* m_file = new QFile(fileName);
     if(m_file->open(QIODevice::WriteOnly))
     {
-        m_file->write("物品名:,");
-        m_file->write(ui->comboBox->currentText().toUtf8().data());
-        m_file->write(",规格:,");
-        m_file->write(ui->comboBox_2->currentText().toUtf8().data());
-        m_file->write("\n");
+//        m_file->write("物品名:,");
+//        m_file->write(ui->comboBox->currentText().toUtf8().data());
+//        m_file->write(",规格:,");
+//        m_file->write(ui->comboBox_2->currentText().toUtf8().data());
+//        m_file->write("\n");
         for(int j=0;j<ui->tableWidget->columnCount();j++)
         {
             m_file->write(ui->tableWidget->horizontalHeaderItem(j)->text().toUtf8().data());

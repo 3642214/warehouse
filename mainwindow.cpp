@@ -2,7 +2,6 @@
 #include "ui_mainwindow.h"
 #include <QHeaderView>
 #include <QComboBox>
-#include <QTableWidgetItem>
 #include <addclass.h>
 #include <QFileDialog>
 #include <showlastrecord.h>
@@ -26,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //    changeEtalon(ui->namesComboBox->currentText());
     QObject::connect(ui->namesComboBox,SIGNAL(currentTextChanged(QString)),this,SLOT(changeEtalon(QString)));
     QObject::connect(ui->etalonComboBox,SIGNAL(currentTextChanged(QString)),this,SLOT(on_serachButton_clicked()));
+    QObject::connect(ui->tableWidget,SIGNAL(itemChanged(QTableWidgetItem*)),this,SLOT(addWare(QTableWidgetItem*)));
     ui->namesComboBox->addItems(myDB->getAllName());
     ui->tableWidget->installEventFilter(this);
 
@@ -91,9 +91,6 @@ void MainWindow::setCulReadOnlay()
     qDebug()<<"row size is "<<rowSize;
     for(int i=0;i<rowSize;i++)
     {
-        //                if(ui->tableWidget->item(i,0) == NULL){
-        //                    ui->tableWidget->setItem(i,0,new QTableWidgetItem(QString("")));
-        //                }
         ui->tableWidget->item(i, 0)->setFlags(Qt::NoItemFlags);
     }
 }
@@ -104,7 +101,6 @@ void MainWindow::initItem(int row)
     qDebug()<<"column size is "<<colSize;
     for(int i = 0;i<colSize;i++)
     {
-
         ui->tableWidget->setItem(row,i,new QTableWidgetItem(QString("")));
     }
 }
@@ -119,7 +115,6 @@ void MainWindow::on_serachButton_clicked()
     qDebug()<<"serach : ID is "<<id;
     QList<detail> myDetails = myDB->getDetails(id);
     addRow(myDetails);
-
 }
 
 void MainWindow::on_addButton_clicked()
@@ -255,8 +250,6 @@ void MainWindow::on_exportButton_clicked()
         }
         m_file->close();
     }
-
-
     QMessageBox::information(this, tr("OK"), tr("保存成功！"));
 }
 
@@ -294,4 +287,30 @@ void MainWindow::outEditMode()
     ui->addClassButton->setDisabled(false);
     ui->exportButton->setDisabled(false);
     ui->showLastRecordButton->setDisabled(false);
+}
+
+void MainWindow::addWare(QTableWidgetItem *item)
+{
+    int i = 0;
+    int j = 0;
+    if((item->column() == 12 or item->column() == 11 ) and item->row() == ui->tableWidget->currentRow())
+    {
+        int r = item->row();
+        qDebug()<<r;
+        if(ui->tableWidget->item(r,11)->text() == "")
+        {
+            i = 0;
+        }else
+        {
+            i = ui->tableWidget->item(r,11)->text().toInt();
+        }
+        if(ui->tableWidget->item(r,12)->text() == "")
+        {
+            j = 0;
+        }else
+        {
+            j = ui->tableWidget->item(r,12)->text().toInt();
+        }
+        ui->tableWidget->item(r,13)->setText(QString::number(i + j));
+    }
 }
