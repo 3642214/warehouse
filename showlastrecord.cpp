@@ -31,6 +31,21 @@ void showLastRecord::changeEtalon(QString name)
     ui->comboBox_2->addItems(myDB1->getEtalon(name));
 }
 
+void showLastRecord::resetTableSize()
+{
+    int t_width = 0;
+    int i = 0;
+    int c = ui->tableWidget->columnCount();
+    for(; i <= c; i++)
+    {
+//        qDebug()<<ui->tableWidget->columnWidth(i);
+        t_width += ui->tableWidget->columnWidth(i) + 4;
+    }
+//    t_width -= i / 2;
+//    qDebug()<<"showlastreocrd size is "<<t_width<<i;
+    this->resize(t_width,this->height());
+}
+
 void showLastRecord::on_pushButton_clicked()
 {
     ui->tableWidget->clearContents();
@@ -69,6 +84,7 @@ void showLastRecord::on_pushButton_clicked()
         }
     }
     ui->tableWidget->resizeColumnsToContents();
+    resetTableSize();
 }
 
 void showLastRecord::setTableItem(QString name, QString etalon, QList<detail> detailList)

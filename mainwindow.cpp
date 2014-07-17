@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->tableWidget->resizeColumnsToContents();
+    //    ui->tableWidget->resizeColumnsToContents();
     myDB = new db();
     //    qDebug()<< myDB->setClass("呆扳手","8-10");
     //    qDebug()<< myDB->setClass("呆扳手","9-11");
@@ -23,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //    qDebug()<< myDB->getDetail(1).at(0).date;
     //    ui->namesComboBox->addItems(myDB->getAllName());
     //    changeEtalon(ui->namesComboBox->currentText());
+    //    QObject::connect(ui->tableWidget,SIGNAL(changeSize(int,int)),this,SLOT(resetWindowsSize(int,int)));
     QObject::connect(ui->namesComboBox,SIGNAL(currentTextChanged(QString)),this,SLOT(changeEtalon(QString)));
     QObject::connect(ui->etalonComboBox,SIGNAL(currentTextChanged(QString)),this,SLOT(on_serachButton_clicked()));
     QObject::connect(ui->tableWidget,SIGNAL(itemChanged(QTableWidgetItem*)),this,SLOT(addWare(QTableWidgetItem*)));
@@ -49,19 +50,19 @@ void MainWindow::addRow(QList<detail> d)
 {
     clearRow();
     int detailsSize = d.size();
-    qDebug()<<"get details size is "<<detailsSize;
+    //    qDebug()<<"get details size is "<<detailsSize;
     if(detailsSize>=0)
     {
         ui->tableWidget->setRowCount(detailsSize);
         int i = 0;
         for(;i<detailsSize;i++){
             detail m_detail = d.at(i);
-            qDebug()<<"addRow "<<i<<m_detail.id<<m_detail.classID<<m_detail.date<<m_detail.number<<m_detail.summary<<m_detail.income<<m_detail.lend_long<<m_detail.lend_sort<<m_detail.loss<<m_detail.lost<<m_detail.total;
+            //            qDebug()<<"addRow "<<i<<m_detail.id<<m_detail.classID<<m_detail.date<<m_detail.number<<m_detail.summary<<m_detail.income<<m_detail.lend_long<<m_detail.lend_sort<<m_detail.loss<<m_detail.lost<<m_detail.total;
             //            ui->tableWidget->setItem(0,0,new QTableWidgetItem("2222"));
             ui->tableWidget->setItem(i,0,new QTableWidgetItem(QString::number(m_detail.id)));
             ui->tableWidget->setItem(i,1,new QTableWidgetItem(QString(m_detail.date)));
             ui->tableWidget->setItem(i,2,new QTableWidgetItem(QString(m_detail.number)));
-            ui->tableWidget->setItem(i,3,new QTableWidgetItem(QString::number(m_detail.summary,10)));
+            ui->tableWidget->setItem(i,3,new QTableWidgetItem(QString(m_detail.summary)));
             ui->tableWidget->setItem(i,4,new QTableWidgetItem(QString::number(m_detail.income,10)));
             ui->tableWidget->setItem(i,5,new QTableWidgetItem(QString::number(m_detail.lend_long),10));
             ui->tableWidget->setItem(i,6,new QTableWidgetItem(QString::number(m_detail.lend_sort,10)));
@@ -77,6 +78,7 @@ void MainWindow::addRow(QList<detail> d)
         }
     }
     ui->tableWidget->resizeColumnsToContents();
+    this->resetWindowsSize();
     setCulReadOnlay();
 }
 
@@ -166,7 +168,7 @@ void MainWindow::on_commitButton_clicked()
         classId,
         ui->tableWidget->item(row,1)->text(),
         ui->tableWidget->item(row,2)->text(),
-        ui->tableWidget->item(row,3)->text().toInt(),
+        ui->tableWidget->item(row,3)->text(),
         ui->tableWidget->item(row,4)->text().toInt(),
         ui->tableWidget->item(row,5)->text().toInt(),
         ui->tableWidget->item(row,6)->text().toInt(),
@@ -313,4 +315,18 @@ void MainWindow::addWare(QTableWidgetItem *item)
         }
         ui->tableWidget->item(r,13)->setText(QString::number(i + j));
     }
+}
+
+void MainWindow::resetWindowsSize()
+{
+    int t_width = 0;
+    int i = 0;
+    int c = ui->tableWidget->columnCount();
+    for(; i <= c; i++)
+    {
+        t_width += ui->tableWidget->columnWidth(i) + 2;
+    }
+    t_width -= i / 2;
+    qDebug()<<"size is "<<t_width;
+    this->resize(t_width,this->height());
 }

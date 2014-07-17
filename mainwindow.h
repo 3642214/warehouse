@@ -40,6 +40,7 @@ private slots:
     void inEditMode();
     void outEditMode();
     void addWare(QTableWidgetItem* item);
+    void resetWindowsSize();
 };
 
 #endif // MAINWINDOW_H

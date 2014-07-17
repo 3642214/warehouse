@@ -25,6 +25,7 @@ public:
 
 public slots:
     void changeEtalon(QString name);
+    void resetTableSize();
 private slots:
     void on_pushButton_clicked();
     void setTableItem(QString name, QString etalon, QList<detail> detailList);

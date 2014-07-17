@@ -268,25 +268,7 @@ QList<detail> db::getDetails(int classID)
         logOK;
     }
     while (sql_q.next()) {
-        detail myDetail ={
-            sql_q.value(0).toInt(),
-            sql_q.value(1).toInt(),
-            sql_q.value(2).toString(),
-            sql_q.value(3).toString(),
-            sql_q.value(4).toInt(),
-            sql_q.value(5).toInt(),
-            sql_q.value(6).toInt(),
-            sql_q.value(7).toInt(),
-            sql_q.value(8).toInt(),
-            sql_q.value(9).toInt(),
-            sql_q.value(10).toInt(),
-            sql_q.value(11).toInt(),
-            sql_q.value(12).toInt(),
-            sql_q.value(13).toInt(),
-            sql_q.value(14).toInt(),
-            sql_q.value(15).toInt()
-        };
-        qDebug()<<"get details :";
+        detail myDetail = SETDETAIL;
         qdebugDetail;
         details<<myDetail;
     }
@@ -309,25 +291,7 @@ QList<detail> db::getDetailsByName(QString name)
         logOK;
     }
     while (sql_q.next()) {
-        detail myDetail ={
-            sql_q.value(0).toInt(),
-            sql_q.value(1).toInt(),
-            sql_q.value(2).toString(),
-            sql_q.value(3).toString(),
-            sql_q.value(4).toInt(),
-            sql_q.value(5).toInt(),
-            sql_q.value(6).toInt(),
-            sql_q.value(7).toInt(),
-            sql_q.value(8).toInt(),
-            sql_q.value(9).toInt(),
-            sql_q.value(10).toInt(),
-            sql_q.value(11).toInt(),
-            sql_q.value(12).toInt(),
-            sql_q.value(13).toInt(),
-            sql_q.value(14).toInt(),
-            sql_q.value(15).toInt()
-        };
-        qDebug()<<"get details :";
+        detail myDetail = SETDETAIL;
         qdebugDetail;
         details<<myDetail;
     }
@@ -350,25 +314,7 @@ QList<detail> db::getDetailsByEtalon(QString etalon)
         logOK;
     }
     while (sql_q.next()) {
-        detail myDetail ={
-            sql_q.value(0).toInt(),
-            sql_q.value(1).toInt(),
-            sql_q.value(2).toString(),
-            sql_q.value(3).toString(),
-            sql_q.value(4).toInt(),
-            sql_q.value(5).toInt(),
-            sql_q.value(6).toInt(),
-            sql_q.value(7).toInt(),
-            sql_q.value(8).toInt(),
-            sql_q.value(9).toInt(),
-            sql_q.value(10).toInt(),
-            sql_q.value(11).toInt(),
-            sql_q.value(12).toInt(),
-            sql_q.value(13).toInt(),
-            sql_q.value(14).toInt(),
-            sql_q.value(15).toInt()
-        };
-        qDebug()<<"get details :";
+        detail myDetail = SETDETAIL;
         qdebugDetail;
         details<<myDetail;
     }
@@ -390,25 +336,7 @@ QList<detail> db::getAllDetails()
         logOK;
     }
     while (sql_q.next()) {
-        detail myDetail ={
-            sql_q.value(0).toInt(),
-            sql_q.value(1).toInt(),
-            sql_q.value(2).toString(),
-            sql_q.value(3).toString(),
-            sql_q.value(4).toInt(),
-            sql_q.value(5).toInt(),
-            sql_q.value(6).toInt(),
-            sql_q.value(7).toInt(),
-            sql_q.value(8).toInt(),
-            sql_q.value(9).toInt(),
-            sql_q.value(10).toInt(),
-            sql_q.value(11).toInt(),
-            sql_q.value(12).toInt(),
-            sql_q.value(13).toInt(),
-            sql_q.value(14).toInt(),
-            sql_q.value(15).toInt()
-        };
-        qDebug()<<"get details :";
+        detail myDetail = SETDETAIL;
         qdebugDetail;
         details<<myDetail;
     }
@@ -431,25 +359,7 @@ QList<detail> db::getLastDetail(int classID)
         logOK;
     }
     while (sql_q.next()) {
-       detail myDetail = {
-            sql_q.value(0).toInt(),
-            sql_q.value(1).toInt(),
-            sql_q.value(2).toString(),
-            sql_q.value(3).toString(),
-            sql_q.value(4).toInt(),
-            sql_q.value(5).toInt(),
-            sql_q.value(6).toInt(),
-            sql_q.value(7).toInt(),
-            sql_q.value(8).toInt(),
-            sql_q.value(9).toInt(),
-            sql_q.value(10).toInt(),
-            sql_q.value(11).toInt(),
-            sql_q.value(12).toInt(),
-            sql_q.value(13).toInt(),
-            sql_q.value(14).toInt(),
-            sql_q.value(15).toInt()
-        };
-        qDebug()<<"get details :";
+       detail myDetail = SETDETAIL;
         qdebugDetail;
         details<<myDetail;
     }

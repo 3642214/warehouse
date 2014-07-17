@@ -73,6 +73,20 @@ bool zjTableWidget::event(QEvent *e)
     return QTableWidget::event(e);
 }
 
+void zjTableWidget::resizeColumnsToContents()
+{
+//    int t_width = 0;
+//    int i = 0;
+//    for(; i <= this->columnCount(); i++)
+//    {
+//        t_width += this->columnWidth(i);
+//    }
+//    t_width += (i - 1);
+//    qDebug()<<"size is "<<t_width;
+//    emit changeSize(t_width,this->height());
+    return QTableView::resizeColumnsToContents();
+}
+
 //void zjTableWidget::printitemActivated()
 //{
 //    qDebug()<<"printitemActivated";
